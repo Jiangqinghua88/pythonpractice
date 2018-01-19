@@ -36,13 +36,37 @@ for i in range(3):
 # python 练习题6
 # 斐波那契数列, 指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……。
 def fibb(a):
+    if a==0:
+        return [0]
+    if a==1:
+        return [0,1]
+    if a==2:
+        return [0,1,1]
     arr=[0,1,1]
+
     for j in range(3,a):
         arr.append(arr[j-2]+arr[j-1])
 #        arr[j]=arr[j-2]+arr[j-1]
 #        arr.append(arr[j])        
     return arr
 
-print fibb(10)
+print fibb(1)
 
 
+# python 练习题7
+# 题目：将一个列表的数据复制到另一个列表中。
+# 方法1：
+def revert(arr):
+    abb=[]
+    abb=arr[:]
+    return abb
+
+print revert([1,2,3,4])
+#方法2：
+
+def revert2(arr):
+    abb=[]
+    for i in range(len(arr)):
+        abb.append(arr[i])
+    return abb
+print revert2([4,5,6,7,8,9])
