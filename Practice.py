@@ -87,6 +87,7 @@ for i in range(1,10):
 # python 练习题9
 #题目：暂停一秒输出。
 #程序分析：使用 time 模块的 sleep() 函数。  
+'''
 import time 
 myDictionary = {"a": 123, "b": 456, "c":789 }
 
@@ -100,3 +101,32 @@ myD = {1: 'a', 2: 'b'}
 for key, value in dict.items(myD):
     print key, value
     time.sleep(1) # 暂停 1 秒
+
+
+# python 练习题10
+#  暂停一秒输出，并格式化当前时间。
+localtime = time.localtime(time.time())  #time.time()返回当前时间的时间戳  time.localtime()接收时间辍(可选),并返回当地时间下的时间元组
+print localtime
+time.sleep(1)
+localtime = time.asctime(time.localtime(time.time())) #time.asctime（）接受时间元组并返回一个可读的形式为"Tue Dec 11 18:07:14 2008"
+print "本地时间为：", localtime
+time.sleep(1)
+print "格式化时间为：", time.strftime("%Y-%m-%d %H:%M:%S",time.localtime()) # 	time.strftime(fmt[,tupletime])接收以时间元组，并返回以可读字符串表示的当地时间，格式由fmt决定。
+time.sleep(1)
+print "格式化时间为：", time.strftime("%Y-%m-%d %H:%M:%S",time.localtime()) 
+'''
+
+# python 练习题11
+# 题目：古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？
+# 程序分析：兔子的规律为数列1,1,2,3,5,8,13,21....
+
+def rabbit(months):
+    a=[1,1]
+    for i in range(2,months):
+        a.append(a[i-1]+a[i-2])
+    return a 
+
+b= rabbit(45)
+for j in range(1,(len(b)+1)):
+    print "第%d个月兔子总对数为：" % j,b[j-1]
+
