@@ -32,7 +32,7 @@ for i in range(3):
     l=l.append(x)
     print l.sorted()
 '''
-
+'''
 # python 练习题6
 # 斐波那契数列, 指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……。
 def fibb(a):
@@ -70,3 +70,33 @@ def revert2(arr):
         abb.append(arr[i])
     return abb
 print revert2([4,5,6,7,8,9])
+
+
+# python 练习题8
+# 题目：输出 9*9 乘法口诀表。
+# 程序分析：分行与列考虑，共9行9列，i控制行，j控制列。
+# 方法1：
+
+for i in range(1,10):
+    print
+    for j in range(1,i+1):
+        print "%d * %d = %d" % (i, j, i*j),  #逗号表示不换行， 通配符的使用要注意。
+#        print i,"*",j,"==",i*j,
+
+'''
+# python 练习题9
+#题目：暂停一秒输出。
+#程序分析：使用 time 模块的 sleep() 函数。  
+import time 
+myDictionary = {"a": 123, "b": 456, "c":789 }
+
+for i in myDictionary.keys():
+    print i,
+    time.sleep(1)
+    print myDictionary.get(i)
+    time.sleep(1)
+
+myD = {1: 'a', 2: 'b'}
+for key, value in dict.items(myD):
+    print key, value
+    time.sleep(1) # 暂停 1 秒
