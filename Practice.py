@@ -119,7 +119,7 @@ print "格式化时间为：", time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(
 # python 练习题11
 # 题目：古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？
 # 程序分析：兔子的规律为数列1,1,2,3,5,8,13,21....
-
+#方法1
 def rabbit(months):
     a=[1,1]
     for i in range(2,months):
@@ -130,3 +130,20 @@ b= rabbit(45)
 for j in range(1,(len(b)+1)):
     print "第%d个月兔子总对数为：" % j,b[j-1]
 
+#方法2： # 这种写法是 菜鸟教程提供的
+def rabbit1(num):
+    f1 = 1
+    #第一个月为1
+    f2 = 1
+    #第二个月为1
+    if num == 1 or num == 2:
+        return 1
+    else:
+        for i in range(num-1):
+            f1,f2 = f2,f1+f2
+    return f1
+print rabbit1(36)  # 第三十六月兔子数量
+
+# python 练习题12
+# 题目：判断101-200之间有多少个素数，并输出所有素数。
+# 程序分析：判断素数的方法：用一个数分别去除2到sqrt(这个数)，如果能被整除，则表明此数不是素数，反之是素数。 
