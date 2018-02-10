@@ -119,3 +119,90 @@ for i in range(9,0,-1):
 
 
 
+#Python 练习实例23
+#题目：打印出如下图案（菱形）:
+'''
+  *
+  ***
+ *****
+*******
+ *****
+  ***
+   *
+'''
+#程序分析：思路： 先打印一个正三角形，再打印一个倒三角形
+
+for i in range(4):        # 打印正三角形，
+    for j in range(2-i+1):
+        print " ",
+    for k in range (2*i+1):
+        print "*",
+    print "\n"
+    
+for i in range(3):
+    for j in range(i+1):
+        print " ",
+    for k in range(4-2*i+1):
+        print "*",
+    print "\n"
+
+
+# Python 练习实例24
+# 题目：有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13...求出这个数列的前20项之和。
+# 程序分析：请抓住分子与分母的变化规律。
+
+a= 2.0
+b=1.0
+sum1=0.0
+for i in range(1,21):
+    sum1= sum1+a/b
+    t= a
+    a= a+b
+    b=t
+print sum1
+
+# Python 练习实例25
+# 题目：求1+2!+3!+...+20!的和。
+# 程序分析：此程序只是把累加变成了累乘。
+
+sum2 = 0
+for i in range(1,21):
+    t=1
+    for j in range(i,1,-1):
+        t= t*j
+    sum2= sum2+t
+
+print sum2
+
+# Python 练习实例26
+# 题目：利用递归方法求5!。
+# 程序分析：递归公式：fn=fn_1*4!
+s=1
+for n in range(5,1,-1):
+    s=s*n
+print s
+
+
+# Python 练习实例27
+# 利用递归函数调用方式，将所输入的5个字符，以相反顺序打印出来。
+#方法1 自己做的
+def output1(s):
+    a=[]
+    len1= len(s)
+    for i in range(len1,0,-1):
+        b= s[i-1]
+        a.append(b)
+    print a
+
+output1("abcdef")
+        
+#方法2 递归方法实现
+def output2(s,l):
+    if l==0:
+        return
+    print(s[l-1]),
+    output2(s,l-1)
+
+s="123456789"
+l=len(s)
+output2(s,l)
