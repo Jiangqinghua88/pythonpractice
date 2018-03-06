@@ -206,3 +206,24 @@ def output2(s,l):
 s="123456789"
 l=len(s)
 output2(s,l)
+
+
+# Python 练习实例30
+# 题目：一个5位数，判断它是不是回文数。即12321是回文数，个位与万位相同，十位与千位相同。
+
+def palin_number(n):
+    n=str(n)
+    m=n[::-1]  #将元组或列表反向输出
+    return n==m
+
+print palin_number(12321)
+
+#方法二：
+'''
+def palin_number(n):
+    n= str(n)
+    m=n
+    return n==m
+
+print palin_number(12321)
+'''
