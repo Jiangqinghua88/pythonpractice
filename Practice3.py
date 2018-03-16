@@ -93,3 +93,69 @@ print sequence([8,7,6,10,21,30,2])
 #Python 练习实例38
 #题目：求一个3*3矩阵主对角线元素之和。
 #程序分析：利用双重for循环控制输入二维数组，再将a[i][i]累加后输出。
+'''
+if __name__ == '__main__':
+    a = []
+    sum = 0.0
+    for i in range(3):
+        a.append([])
+        for j in range(3):
+            a[i].append(float(raw_input("input num:\n")))
+    for i in range(3):
+        sum += a[i][i]
+    print sum
+'''
+
+#Python 练习实例39
+#题目：有一个已经排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
+#程序分析：首先判断此数是否大于最后一个数，然后再考虑插入中间的数的情况，插入后此元素之后的数，依次后移一个位置。
+
+
+def InsertData(arrrr):
+    print "原始列表："
+    for a in range(len(arrrr)):
+        print arrrr[a],
+    print 
+    letter = 2
+    end = arrrr[len(arrrr)-2]
+    if (letter > end):
+        arrrr[-1]=letter
+        print arrrr
+    else:
+        for i in range(len(arrrr)+2):
+            if (arrrr[i]>= letter):
+                temp = arrrr[i]
+                arrrr[i] = letter
+                for j in range(i+1,6):
+                    temp2=arrrr[j]
+                    arrrr[j]=temp
+                    temp=temp2
+                break
+        print arrrr
+InsertData([0,3,5,7,8,9,0])
+
+#Python 练习类的用法   
+# 
+class Employee:
+    empCount = 0 #empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享。你可以在内部类或外部类使用 Employee.empCount 访问。
+    def __init__(self,name,salary): # 方法__init__()方法是一种特殊的方法，被称为类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法
+        self.name = name
+        self.salary = salary
+        Employee.empCount += 1
+    def displayCount(self):
+        print "Total Employee %d" % Employee.empCount
+    def displayEmployee(self): #self 代表类的实例，self 在定义类的方法时是必须有的，虽然在调用时不必传入相应的参数。
+        print "Name:",self.name,",Salary:",self.salary
+
+emp1 = Employee('Zara',2000) #创建 Employee 类的第一个对象
+emp2 = Employee('Manni',5000)#创建 Employee 类的第二个对象
+emp1.displayEmployee() #您可以使用点号 . 来访问对象的属性。
+emp2.displayEmployee() 
+print "Total Employee %d" % Employee.empCount
+emp1.age =7
+emp1.age = 8
+setattr(emp1, 'age', 8) # 添加属性 'age' 值为 8
+hasattr(emp1, 'age')    # 如果存在 'age' 属性返回 True。
+getattr(emp1, 'age')    # 返回 'age' 属性的值
+
+print "Employee.age:", emp1.age
