@@ -152,10 +152,94 @@ emp2 = Employee('Manni',5000)#创建 Employee 类的第二个对象
 emp1.displayEmployee() #您可以使用点号 . 来访问对象的属性。
 emp2.displayEmployee() 
 print "Total Employee %d" % Employee.empCount
-emp1.age =7
-emp1.age = 8
+emp1.age =7   # 添加一个 'age' 属性
+emp1.age = 8 # 修改 'age' 属性
 setattr(emp1, 'age', 8) # 添加属性 'age' 值为 8
 hasattr(emp1, 'age')    # 如果存在 'age' 属性返回 True。
 getattr(emp1, 'age')    # 返回 'age' 属性的值
 
 print "Employee.age:", emp1.age
+
+#Python 练习类的继承
+
+#python中继承中的一些特点：
+
+#1：在继承中基类的构造（__init__()方法）不会被自动调用，它需要在其派生类的构造中亲自专门调用。
+#2：在调用基类的方法时，需要加上基类的类名前缀，且需要带上self参数变量。区别在于类中调用普通函数时并不需要带上self参数
+#3：Python总是首先查找对应类型的方法，如果它不能在派生类中找到对应的方法，它才开始到基类中逐个查找。（先在本类中查找调用的方法，找不到才去基类中找）。
+#如果在继承元组中列了一个以上的类，那么它就被称作"多重继承" 。
+class Parent:
+    parentAttr = 100
+    def __init__(self):
+        print "调用父类构造函数"
+    def parentMethod(self):
+        print "调用父类方法"
+    def setAttr(self,attr):
+        Parent.parentAttr = attr
+    def getAttr(self):
+        print "父类属性 :", Parent.parentAttr
+    
+class Child(Parent):
+    def __init__(self):
+        print "调用子类构造方法"
+    def childMethod(self):
+        print "调用子类方法"
+
+
+c= Child()  # 实例化子类
+c.childMethod()  # 调用子类的方法
+c.parentMethod() # 调用父类方法
+c.setAttr(300) # 再次调用父类的方法 - 设置属性值
+c.getAttr()  # 再次调用父类的方法 - 获取属性值
+
+
+#Python 练习方法重写
+
+class Parent:   # 定义父类
+    def myMethod(self):
+        print "调用父类方法"
+class Child1(Parent):
+    def myMethod(self):  #父类方法重写
+        print "调用子类方法"   
+
+c= Child1()
+c.myMethod()
+
+#运算符重载
+class Vector:
+    def __init__(self,a,b):
+        self.a = a
+        self.b = b
+    def __str__(self):
+        return "Vector(%d,%d)" %(self.a,self.b)
+    def __add__(self,other):
+        return Vector(self.a+ other.a, self.b + other.b)
+v1 = Vector(2,10)
+v2 = Vector(5,-2)
+print v1+v2
+
+#类属性与方法
+#类的私有属性
+#__private_attrs：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问。在类内部的方法中使用时 self.__private_attrs。
+#类的方法
+#在类的内部，使用 def 关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数 self,且为第一个参数
+#类的私有方法
+#__private_method：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 self.__private_methods
+
+class JustCounter:
+    __secretCount = 0
+    publicCount = 0
+    def count(self):
+        self.__secretCount +=1
+        self.publicCount += 1
+        print self.__secretCount
+
+counter = JustCounter()
+counter.count()
+counter.count()
+print counter.publicCount
+#print counter.__secretCount
+
+import re
+print (re.match(""))
+
